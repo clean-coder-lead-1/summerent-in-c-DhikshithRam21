@@ -14,3 +14,43 @@ TEST_CASE("classifies the temperature breach according to the current temperatur
   REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING, 50) == TOO_HIGH);
   REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING, -5) == TOO_LOW);
 }
+
+TEST_CASE("Alert to controller/Mail based on temperature") {
+
+  AlertTarget alerttarget;
+  CoolingType coolingType;
+
+  coolingType = MED_ACTIVE_COOLING;
+  alerttarget = TO_CONTROLLER;
+  checkAndAlert(alerttarget, coolingType, 45);
+
+  coolingType = HI_ACTIVE_COOLING;
+  alerttarget = TO_EMAIL;
+  checkAndAlert(alerttarget, coolingType, 45);
+
+  
+}
+
+TEST_CASE(" Sent to controller check") {
+
+  BreachType Breachtype=TOO_HIGH;
+  sendToController(Breachtype);
+
+  Breachtype=TOO_LOW;
+  sendToController(Breachtype);
+
+  Breachtype=NORMAL;
+  sendToController(Breachtype);
+}
+
+TEST_CASE(" Sent to Email check") {
+
+  BreachType Breachtype=TOO_HIGH;
+  sendToEmail(Breachtype);
+
+  Breachtype=TOO_LOW;
+  sendToEmail(Breachtype);
+
+  Breachtype=NORMAL;
+  sendToEmail(Breachtype);
+}

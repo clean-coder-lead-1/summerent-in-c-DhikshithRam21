@@ -1,7 +1,7 @@
 #include "typewise-alert.h"
 #include <stdio.h>
                             
-int CoolTypeTempLimits[3][2] = {{0,35},{0,45},{0,40}};  //Temperature limts {lowerLimit, upperLimit}
+int CoolTypeTempLimits[3][2] = {{0,35},{0,45},{0,40}};  //Temperature limits {lowerLimit, upperLimit}
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
