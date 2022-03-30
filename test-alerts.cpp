@@ -18,17 +18,17 @@ TEST_CASE("classifies the temperature breach according to the current temperatur
 TEST_CASE("Alert to controller/Mail based on temperature") {
 
   AlertTarget alerttarget;
-  CoolingType coolingType;
-
-  coolingType = HI_ACTIVE_COOLING;
+  BatteryCharacter batterychar;
+  
+  batterychar.coolingType = HI_ACTIVE_COOLING;
   alerttarget = TO_CONTROLLER;
   REQUIRE(alerttarget == TO_CONTROLLER);
-  checkAndAlert(alerttarget, coolingType, 45);
+  checkAndAlert(alerttarget, batterychar.coolingType, 45);
 
-  coolingType = HI_ACTIVE_COOLING;
+  batterychar.coolingType = HI_ACTIVE_COOLING;
   alerttarget = TO_EMAIL;
   REQUIRE(alerttarget == TO_EMAIL);
-  checkAndAlert(alerttarget, coolingType, 45);
+  checkAndAlert(alerttarget, batterychar.coolingType, 45);
 
   
 }
