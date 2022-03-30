@@ -23,12 +23,12 @@ TEST_CASE("Alert to controller/Mail based on temperature") {
   batterychar.coolingType = HI_ACTIVE_COOLING;
   alerttarget = TO_CONTROLLER;
   REQUIRE(alerttarget == TO_CONTROLLER);
-  checkAndAlert(alerttarget, batterychar.coolingType, 45);
+  checkAndAlert(alerttarget, batterychar, 45);
 
   batterychar.coolingType = HI_ACTIVE_COOLING;
   alerttarget = TO_EMAIL;
   REQUIRE(alerttarget == TO_EMAIL);
-  checkAndAlert(alerttarget, batterychar.coolingType, 45);
+  checkAndAlert(alerttarget, batterychar, 45);
 
   
 }
