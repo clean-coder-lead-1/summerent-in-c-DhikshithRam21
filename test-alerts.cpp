@@ -20,12 +20,14 @@ TEST_CASE("Alert to controller/Mail based on temperature") {
   AlertTarget alerttarget;
   CoolingType coolingType;
 
-  coolingType = MED_ACTIVE_COOLING;
+  coolingType = HI_ACTIVE_COOLING;
   alerttarget = TO_CONTROLLER;
+  REQUIRE(alerttarget == TO_CONTROLLER);
   checkAndAlert(alerttarget, coolingType, 45);
 
   coolingType = HI_ACTIVE_COOLING;
   alerttarget = TO_EMAIL;
+  REQUIRE(alerttarget == TO_EMAIL);
   checkAndAlert(alerttarget, coolingType, 45);
 
   
@@ -33,24 +35,30 @@ TEST_CASE("Alert to controller/Mail based on temperature") {
 
 TEST_CASE(" Sent to controller check") {
 
-  BreachType Breachtype=TOO_HIGH;
+  BreachType Breachtype = TOO_HIGH;
+  REQUIRE(Breachtype == TOO_HIGH);
   sendToController(Breachtype);
 
   Breachtype=TOO_LOW;
+  REQUIRE(Breachtype == TOO_LOW);
   sendToController(Breachtype);
 
   Breachtype=NORMAL;
+  REQUIRE(Breachtype == NORMAL);
   sendToController(Breachtype);
 }
 
 TEST_CASE(" Sent to Email check") {
 
   BreachType Breachtype=TOO_HIGH;
+  REQUIRE(Breachtype == TOO_HIGH);
   sendToEmail(Breachtype);
 
   Breachtype=TOO_LOW;
+  REQUIRE(Breachtype == TOO_LOW);
   sendToEmail(Breachtype);
 
   Breachtype=NORMAL;
+  REQUIRE(Breachtype == NORMAL);
   sendToEmail(Breachtype);
 }
