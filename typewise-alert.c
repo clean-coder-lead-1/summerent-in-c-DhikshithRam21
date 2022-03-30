@@ -5,10 +5,13 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
     return TOO_LOW;
   }
-  if(value > upperLimit) {
+  else if(value > upperLimit) {
     return TOO_HIGH;
   }
-  return NORMAL;
+  else
+  {
+    return NORMAL;
+  }
 }
 
 BreachType classifyTemperatureBreach(
